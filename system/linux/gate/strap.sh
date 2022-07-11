@@ -1,0 +1,1 @@
+pacstrap -i /mnt base base-devel linux-firmware linux-lts linux-lts-headers linux linux-headers intel-ucode btrfs-progs podman rsync networkmanager openssh syncthing restic hugo git git-lfs tmux htop nano lm_sensors acpi w3m wget rtorrent irssi boost llvm lldb clang cmake meson zig go net-tools

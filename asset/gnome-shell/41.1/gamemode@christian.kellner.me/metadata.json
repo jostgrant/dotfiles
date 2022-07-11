@@ -1,0 +1,12 @@
+{
+  "extension-id": "gamemode",
+  "name": "GameMode",
+  "description": "Status indicator for GameMode",
+  "uuid": "gamemode@christian.kellner.me",
+  "shell-version": ["3.38", "40", "41"],
+  "version": "6",
+  "url": "https://github.com/gicmo/gamemode-extension",
+  "original-author": "ckellner@redhat.com",
+  "settings-schema": "org.gnome.shell.extensions.gamemode",
+  "gettext-domain": "gamemode-extension"
+}

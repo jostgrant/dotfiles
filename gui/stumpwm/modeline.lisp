@@ -4,7 +4,7 @@
 
 (setf *contrib-dir* "~/.lisp/misc/stumpwm-contrib")
 
-(load-module "disk")
+;;(load-module "disk") ;; doesn't work besides on main machine rn...
 (load-module "cpu")
 (load-module "mem")
 (load-module "net")

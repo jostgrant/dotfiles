@@ -14,6 +14,9 @@
 (apply-screenlayout)
 
 (run-shell-command "setxkbmap -option ctrl:nocaps")
+(run-shell-command "xset s off -dpms")
+(run-shell-command "xset s off")
+
 (run-shell-command "exec cd .common/dotfiles/scripts/ && exec ./weather.sh" t)
 
 

@@ -1,21 +1,19 @@
 ;; -*- lisp -*-
+;; Main StumpWM config file, loads modular configurations.
+
 (in-package :stumpwm)
 
-(defun machine-name ()
-  "Retrieve the machine's hostname."
-  (string-trim '(#\Newline) (run-shell-command "hostname" t)))
+;; Define base directory for config files
+(defparameter *stumpwm-config-dir* "~/.dots./gui/stumpwm/")
 
-(defparameter *workstation-machines* '("BALTHASAR" "CASPER" "MELCHIOR" "NERVESS" "WILLESS"))
-(defparameter *ttymer-machines* '("OPTIMEX" "PRIMER" "MEGATON"))
+;; Load modular configuration files
+(load (concat *stumpwm-config-dir* "core.lisp"))
+(load (concat *stumpwm-config-dir* "interface.lisp"))
+(load (concat *stumpwm-config-dir* "modeline.lisp"))
+(load (concat *stumpwm-config-dir* "keybinds.lisp"))
+(load (concat *stumpwm-config-dir* "apps.lisp"))
 
-(defparameter *workstation-config* "~/.dots./gui/stumpwm/conf/pack/workstation.lisp")
-(defparameter *ttymer-config* "~/.dots./gui/stumpwm/conf/pack/ttymer.lisp")
-
-;; Load config based on hostname.
-(cond
-  ((member (machine-name) *workstation-machines* :test #'string=)
-   (load *workstation-config*))
-  ((member (machine-name) *ttymer-machines* :test #'string=)
-   (load *ttymer-config*))
-  (t
-   (format t "No specific configuration found for this machine.~%")))
+;; Run necessary startup commands
+(run-shell-command "setxkbmap -option ctrl:nocaps")
+(apply-screenlayout)
+(run-shell-command "exec cd .common/dotfiles/scripts/ && exec ./weather.sh" t)

@@ -95,7 +95,7 @@
     (define-key m (kbd "b") "show-battery")
     (define-key m (kbd "v") "version")
     (define-key m (kbd "SunPrint_Screen") "exec scrot '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/PERSONAL/Visual/Screenshots/'")
-    (define-key m (kbd "l") "exec xlock -mode space")
+    (define-key m (kbd "l") "exec light-locker-command --lock")
 ;;  (define-key m (kbd "c") "caffeine")
     (define-key m (kbd "q") "quit")
     m))

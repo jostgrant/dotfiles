@@ -17,6 +17,9 @@
 (run-shell-command "xset s off -dpms")
 (run-shell-command "xset s off")
 
+
+(run-shell-command "light-locker &")
+
 (run-shell-command "exec cd .common/dotfiles/scripts/ && exec ./weather.sh" t)
 
 

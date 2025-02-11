@@ -73,23 +73,6 @@
 ;; SESSION MANAGEMENT
 ;; -------------------------------
 
-(defcommand reinit () ()
-  (run-commands "reload" "loadrc"))
-
-(defcommand show-battery () ()
-   (echo-string (current-screen) (run-shell-command "acpi" t)))
-
-(defcommand toggle-touchpad () ()
-  "Toggle the laptop touchpad on/off."
-  (let ((state (run-shell-command
-                "synclient -l | grep TouchpadOff | awk '{ print $3 }'" t)))
-    (case (string= (subseq state 0 1) "1")
-      (t (shell-command "synclient TouchpadOff=0"))
-      (otherwise (shell-command "synclient TouchpadOff=1")
-                 (banish-pointer)))))
-
-(defcommand caffeine () ()
-  (toggle-caffeine))
 
 (defparameter *session-map*
   (let ((m (make-sparse-keymap)))
@@ -105,6 +88,24 @@
     m))
 
 (define-key *root-map* (kbd "s") '*session-map*)
+
+;; -------------------------------
+;; DISPLAY CONTROL
+;; -------------------------------
+
+(defparameter *display-map*
+  (let ((m (make-sparse-keymap)))
+    (define-key m (kbd "z") "exec xbacklight -set 0")
+    (define-key m (kbd "f") "exec xbacklight -set 100")
+    (define-key m (kbd "i") "exec xbacklight -inc 30")
+    (define-key m (kbd "d") "exec xbacklight -dec 30")
+
+    (define-key m (kbd "r") "exec xrandr --auto")
+    (define-key m (kbd "F") "exec xrandr --output LVDS1 --off")
+    (define-key m (kbd "N") "exec xrandr --output LVDS1 --on")
+    m))
+
+(define-key *root-map* (kbd "d") '*display-map*)
 
 ;; -------------------------------
 ;; VOLUME CONTROL
@@ -124,20 +125,3 @@
 
 (define-key *root-map* (kbd "v") '*volume-map*)
 
-;; -------------------------------
-;; DISPLAY CONTROL
-;; -------------------------------
-
-(defparameter *display-map*
-  (let ((m (make-sparse-keymap)))
-    (define-key m (kbd "z") "exec xbacklight -set 0")
-    (define-key m (kbd "f") "exec xbacklight -set 100")
-    (define-key m (kbd "i") "exec xbacklight -inc 30")
-    (define-key m (kbd "d") "exec xbacklight -dec 30")
-
-    (define-key m (kbd "r") "exec xrandr --auto")
-    (define-key m (kbd "F") "exec xrandr --output LVDS1 --off")
-    (define-key m (kbd "N") "exec xrandr --output LVDS1 --on")
-    m))
-
-(define-key *root-map* (kbd "d") '*display-map*)

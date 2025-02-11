@@ -8,6 +8,7 @@
 
 ;; Load modular configuration files
 (load (concat *stumpwm-config-dir* "core.lisp"))
+(load (concat *stumpwm-config-dir* "cmds.lisp"))
 (load (concat *stumpwm-config-dir* "interface.lisp"))
 (load (concat *stumpwm-config-dir* "modeline.lisp"))
 (load (concat *stumpwm-config-dir* "keybinds.lisp"))

@@ -17,12 +17,11 @@
 (run-shell-command "xset s off -dpms")
 (run-shell-command "xset s off")
 
-
 (run-shell-command "light-locker &")
 
 (run-shell-command "exec cd .common/dotfiles/scripts/ && exec ./weather.sh" t)
 
-
 ;; suppress the message StumpWM displays when it starts. Set it to NIL
 (setf *startup-message* nil)
 (setf *startup-message* "ello 'orld")
+

@@ -88,6 +88,9 @@
       (otherwise (shell-command "synclient TouchpadOff=1")
                  (banish-pointer)))))
 
+(defcommand caffeine () ()
+  (toggle-caffeine))
+
 (defparameter *session-map*
   (let ((m (make-sparse-keymap)))
     (define-key m (kbd "r") "reinit")
@@ -97,7 +100,7 @@
     (define-key m (kbd "SunPrint_Screen") "exec scrot '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/PERSONAL/Visual/Screenshots/'")
     (define-key m (kbd "S") "exec systemctl suspend")
     (define-key m (kbd "l") "exec light-locker-command --lock")
-;;  (define-key m (kbd "c") "caffeine")
+    (define-key m (kbd "c") "caffeine")
     (define-key m (kbd "q") "quit")
     m))
 

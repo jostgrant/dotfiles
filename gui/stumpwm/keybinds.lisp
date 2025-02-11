@@ -106,6 +106,8 @@
     m))
 
 (define-key *root-map* (kbd "d") '*display-map*)
+(define-key *top-map* (kbd "XF86MonBrightnessUp") "exec xbacklight -inc 10")
+(define-key *top-map* (kbd "XF86MonBrightnessDown") "exec xbacklight -dec 10")
 
 ;; -------------------------------
 ;; VOLUME CONTROL
@@ -124,7 +126,6 @@
 (define-key *top-map* (kbd "XF86AudioMute") "exec amixer --quiet set Master toggle")
 
 (define-key *root-map* (kbd "v") '*volume-map*)
-
 
 ;; -------------------------------
 ;; MEDIA CONTROL

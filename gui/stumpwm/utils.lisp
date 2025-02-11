@@ -1,5 +1,6 @@
 (in-package :stumpwm)
 
+
 (defvar *caffeine-mode* nil "Indicates whether caffeine mode is on or off.")
 
 (defun toggle-caffeine ()

@@ -1,5 +1,12 @@
 (in-package :stumpwm)
 
+(defmacro load-config-files (config-dir &rest files)
+  `(progn
+     ,@(mapcar (lambda (file)
+                 `(load (concat ,config-dir ,file)))
+               files)))
+
+
 
 (defvar *caffeine-mode* nil "Indicates whether caffeine mode is on or off.")
 

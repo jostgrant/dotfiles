@@ -125,3 +125,34 @@
 
 (define-key *root-map* (kbd "v") '*volume-map*)
 
+
+;; -------------------------------
+;; MEDIA CONTROL
+;; -------------------------------
+
+(defcommand show-current-song () ()
+  (let ((output (run-shell-command "playerctl metadata --format 'Now playing: {{artist}} - {{title}}'" t)))
+    (message output)))
+
+(defparameter *media-map*
+  (let ((m (make-sparse-keymap)))
+    (define-key m (kbd "p") "exec playerctl play-pause")
+    (define-key m (kbd "n") "exec playerctl next")
+    (define-key m (kbd "b") "exec playerctl previous")
+    (define-key m (kbd "s") "exec playerctl stop")
+
+    ;; Volume controls
+    (define-key m (kbd "i") "exec playerctl volume 0.05+")
+    (define-key m (kbd "d") "exec playerctl volume 0.05-")
+    (define-key m (kbd "m") "exec playerctl volume 0")  ;; Mute
+
+    (define-key m (kbd "S") "exec playerctl shuffle toggle")
+    (define-key m (kbd "R") "exec playerctl loop toggle")
+
+    (define-key m (kbd "f") "exec playerctl position 10+")
+    (define-key m (kbd "r") "exec playerctl position 10-")
+
+    (define-key m (kbd "I") "show-current-song")
+    m))
+
+(define-key *root-map* (kbd "m") '*media-map*)

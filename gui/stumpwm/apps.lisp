@@ -9,7 +9,7 @@
   (run-or-raise "nyxt" '(:instance "Navigator")))
 
 (defcommand termemu () ()
-  (run-or-raise "st" '(:instance "xterm")))
+  (run-or-raise "st" '(:instance "st")))
 
 (defcommand paint () ()
   (run-or-raise "mypaint" '(:instance "mypaint")))
@@ -20,6 +20,7 @@
     (define-key m (kbd "w") "webbrowser")
     (define-key m (kbd "t") "termemu")
     (define-key m (kbd "p") "paint")
+    (define-key m (kbd "K") "exec xkill")  
     m))
 
 (define-key *root-map* (kbd "a") '*application-map*)

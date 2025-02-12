@@ -39,9 +39,14 @@
   (run-shell-command ""))
 
 (run-if-hostname ("OPTIMEX")
-  (run-shell-command ""))
+  ;; Flip input of 'FTSC100:00 2808:5116' (Touchscreen).
+  (run-shell-command "xinput set-prop 14 'Coordinate Transformation Matrix' -1 0 1 0 -1 1 0 0 1"))
 
 (run-if-hostname ("PRIMER")
+  ;; Flip input of ELAN Touchscreen.
+  (run-shell-command "xinput set-prop 13 'Coordinate Transformation Matrix' -1 0 1 0 -1 1 0 0 1"))
+
+(run-if-hostname ("MEGATON")
   (run-shell-command ""))
 
 

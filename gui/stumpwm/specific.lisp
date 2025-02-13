@@ -46,9 +46,9 @@
   ;; Flip input of ELAN Touchscreen.
   (run-shell-command "xinput set-prop 13 'Coordinate Transformation Matrix' -1 0 1 0 -1 1 0 0 1"))
 
+;; Make sure ontime is launched on login.
 (run-if-hostname ("MEGATON")
-  (run-shell-command ""))
-
+   (run-or-raise "~/.appimg/ontime/run.pkg" '(:instance "ontime")))
 
 
 
